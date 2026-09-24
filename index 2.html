@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student musicians and the university: research proposal</title>
+<style>
+:root { --bg:#2a0e1a; --panel:#3a1626; --ink:#f4ead9; --muted:#cbb9a6; --brass:#d9b25f; --hold:#3d2f12; }
+* { box-sizing:border-box; }
+html, body { height:100%; margin:0; }
+body { display:flex; flex-direction:column; background:radial-gradient(ellipse at 50% 0%, #4a1b2f 0%, var(--bg) 60%); color:var(--ink); font:1.2rem/1.6 "Iowan Old Style", Georgia, serif; }
+main { flex:1; position:relative; overflow:hidden; }
+.slide { position:absolute; inset:0; display:flex; overflow:auto; opacity:0; visibility:hidden; transform:translateX(28px); transition:opacity .6s ease, transform .6s ease, visibility .6s; }
+.slide.past { transform:translateX(-28px); }
+.slide.active { opacity:1; visibility:visible; transform:none; }
+.in { margin:auto; width:100%; max-width:48rem; padding:2rem 1.5rem; position:relative; }
+.kicker { font:.95rem system-ui, sans-serif; color:var(--brass); margin:0 0 .5rem; }
+h1 { font-size:clamp(2.1rem,6vw,3.2rem); line-height:1.15; margin:.25rem 0 1rem; }
+h2 { font-size:clamp(1.6rem,4.5vw,2.3rem); line-height:1.2; margin:0 0 1rem; color:var(--brass); }
+h3 { font-size:1.15rem; margin:0 0 .4rem; color:var(--brass); }
+ul { padding-left:1.2rem; margin:.5rem 0; } li { margin:.5rem 0; }
+.big { font-size:clamp(1.4rem,4vw,2rem); line-height:1.4; border-left:4px solid var(--brass); padding-left:1rem; margin:1rem 0; }
+.note { color:var(--muted); font-size:1rem; }
+.cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1rem; margin:1rem 0; }
+.card { background:var(--panel); border:1px solid rgba(217,178,95,.35); border-radius:10px; padding:1rem; font-size:1.02rem; line-height:1.5; }
+.sym { font-family:"Apple Symbols","Noto Music","Segoe UI Symbol",serif; color:var(--brass); }
+.hold { background:var(--hold); border:2px dashed var(--brass); padding:.7rem 1rem; margin:1rem 0; font:.95rem/1.5 system-ui, sans-serif; }
+.hold b { display:block; margin-bottom:.2rem; }
+.float { position:absolute; font-size:2rem; opacity:.25; animation:drift 9s ease-in-out infinite alternate; }
+@keyframes drift { from { transform:translateY(0) rotate(-6deg); } to { transform:translateY(-22px) rotate(8deg); } }
+button { font:1rem system-ui, sans-serif; color:var(--ink); background:transparent; border:1px solid var(--brass); border-radius:999px; padding:.5rem 1.1rem; cursor:pointer; }
+button:hover { background:rgba(217,178,95,.15); }
+button:focus-visible { outline:3px solid var(--brass); outline-offset:2px; }
+footer { display:flex; align-items:center; gap:1rem; padding:.5rem 1rem calc(.5rem + env(safe-area-inset-bottom, 0px)); border-top:1px solid rgba(217,178,95,.3); font:.9rem system-ui, sans-serif; color:var(--muted); }
+.staff { flex:1; position:relative; height:26px; background:repeating-linear-gradient(to bottom, transparent 0 4px, rgba(217,178,95,.55) 4px 5px); margin:0 .5rem; }
+#note { position:absolute; top:-6px; left:0; font-size:1.7rem; line-height:1; color:var(--brass); transition:left .7s cubic-bezier(.4,0,.2,1); font-family:"Apple Symbols","Noto Music","Segoe UI Symbol",serif; }
+svg text { fill:var(--ink); font:12px system-ui, sans-serif; text-anchor:middle; }
+svg .n { fill:var(--panel); stroke:var(--brass); stroke-width:1.5; }
+svg .l { stroke:var(--brass); stroke-dasharray:4 4; stroke-width:1.2; }
+.pl { position:absolute; font-size:1.1rem; line-height:1; color:var(--brass); opacity:0; transform:scale(.4); transition:opacity .5s, transform .5s, text-shadow .4s; font-family:"Apple Symbols","Noto Music","Segoe UI Symbol",serif; pointer-events:none; }
+.pl.on { opacity:.45; transform:none; }
+.pl.glow { opacity:1; text-shadow:0 0 8px var(--brass); }
+.frag { opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease; }
+.frag.on { opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce) { .slide, #note, .frag { transition:none; } .float { animation:none; } }
+</style>
+</head>
+<body>
+<main id="deck">
+
+<section class="slide"><div class="in">
+  <span class="float sym" style="right:8%;top:8%">&#9834;</span><span class="float sym" style="right:22%;top:55%;animation-delay:-3s">&#9835;</span><span class="float sym" style="left:2%;top:70%;animation-delay:-5s">&#9839;</span>
+  <p class="kicker">Overture &middot; research proposal, part one</p>
+  <h1><span class="sym">&#119070;</span> Student musicians and the university</h1>
+  <p>How student musicians understand their performances, and their connection to the university. An interpretivist study.</p>
+  <p class="note">[Your name or pseudonym] &middot; [Course, date]</p>
+  <button id="tune" type="button">Tune up: hear an A (440 Hz)</button>
+  <p class="note">Each new screen adds one note to the staff below. On the last screen you hear the whole piece, a theme from Beethoven.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Theme &middot; starting observation</p>
+  <h2>A public connection</h2>
+  <ul>
+    <li>Student musicians perform in contexts where they are publicly connected to their university.</li>
+    <li>Some may say they represent it. Others may say they simply perform music. Others may use completely different language.</li>
+  </ul>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement I &middot; research question</p>
+  <p class="big">How do student musicians experience performing at university events and outside campus, and how do they understand their connection to the university through these performances?</p>
+  <p class="note">Main question: performance experience. Analytical focus: the university connection. I do not assume students see themselves as representing NU, or that a connection feels good or bad.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement II &middot; epistemological positioning</p>
+  <h2>Interpretivism: same performance, different music</h2>
+  <div class="cols">
+    <div class="card">&ldquo;Proud to represent NU.&rdquo;</div>
+    <div class="card">&ldquo;Simply performing as a musician.&rdquo;</div>
+    <div class="card">&ldquo;Responsibility, even pressure.&rdquo;</div>
+  </div>
+  <ul>
+    <li>I take an interpretivist approach because I want to understand how student musicians themselves interpret their experiences.</li>
+    <li>Different students can live the same performance in different ways. I treat that variation as meaningful, not something to resolve.</li>
+  </ul>
+  <p class="big" style="font-size:1.3rem">I want to understand students' own meanings rather than impose my own definition of what representation means.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement II &middot; epistemological positioning</p>
+  <h2>What this means for how I study it</h2>
+  <ul>
+    <li><b>What I am not doing:</b> measuring whether performing increases belonging or responsibility, or looking for one objective effect. That would be a positivist question.</li>
+    <li><b>What counts as knowledge:</b> the meanings students give their experiences, in their own words. Only they can tell me how they see it.</li>
+    <li><b>My own role:</b> I am part of how meaning is made in an interview, so I do not claim to be neutral. I use reflexivity: I write down my expectations and check them against what students say.</li>
+    <li><b>Good evidence:</b> rich detail (thick description) and interpretations I can show from students' words, not counts.</li>
+    <li><b>Limits:</b> I show how these students understand it, and readers judge whether it applies to their own setting (transferability).</li>
+  </ul>
+  <ul class="note">
+    <li><b>Thick description:</b> describing an experience with enough detail and context that a reader understands what it meant to the person.</li>
+    <li><b>Reflexivity:</b> noticing and writing down how my own background and expectations shape what I ask and hear.</li>
+    <li><b>Transferability:</b> giving enough detail for readers to judge whether the findings might fit their own setting.</li>
+  </ul>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement III &middot; contribution</p>
+  <h2>A student-centered account</h2>
+  <ul>
+    <li>How student musicians understand performing in university and outside-campus contexts, including whether and how they connect it to the university.</li>
+    <li>Extends research on music participation and student belonging.</li>
+    <li>Small and situated. Thick description lets others judge whether it resembles their context (transferability).</li>
+  </ul>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement IV &middot; literature review</p>
+  <h2>Three conversations</h2>
+  <div class="cols">
+    <div class="card"><h3>Belonging</h3>Dost and Mazzoli Smith (2023) brought together qualitative studies (a meta-ethnography) on how students themselves understand belonging to their university.<br><br><i>Why it matters:</i> belonging is treated as the students' own meaning.</div>
+    <div class="card"><h3>Music making</h3>Kokotsaki and Hallam (2007) asked 78 music students what music making did in their lives. It was a social act that brought belonging and a feeling of contributing to a group.<br><br><i>Why it matters:</i> it links music making with belonging.</div>
+    <div class="card"><h3>Representation</h3>Matthews and Dollinger (2023) argue that student representation and student partnership are different, using two points of difference: responsibility and access.<br><br><i>Why it matters:</i> it shows how representation is usually understood.</div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement IV &middot; the debate</p>
+  <h2>What does representation mean?</h2>
+  <p class="note">Matthews and Dollinger argue that representation and partnership differ, and that the difference matters. Press Next to reveal each idea.</p>
+  <div class="cols" style="grid-template-columns:1fr 1fr">
+    <div class="card frag"><h3><span class="sym">&#9834;</span> Speaking for others</h3>Students speaking on behalf of other students, in student voice and governance.</div>
+    <div class="card frag"><h3><span class="sym">&#9835;</span> Partnering with staff</h3>Students working together with teachers and staff on teaching and learning. The authors say this is not the same as representation.</div>
+    <div class="card frag"><h3><span class="sym">&#9833;</span> Publicly connected</h3>Students connected to the university through performing. This is what I study, without assuming they see it as representing.</div>
+    <div class="card frag"><h3><span class="sym">&#9839;</span> Rejecting the idea</h3>"I just play music." For me this is data too, not a problem.</div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement IV &middot; the gap</p>
+  <h2>What is still unheard</h2>
+  <ul>
+    <li>Belonging is studied through students' own views.</li>
+    <li>Music making is linked to belonging and to contributing to a group.</li>
+    <li>Representation is discussed mostly as students speaking for other students.</li>
+    <li>In the sources I have so far, these conversations sit apart. My study brings them together by asking how student musicians themselves understand their performances and whether they connect them to their university.</li>
+  </ul>
+  <p class="note">Provisional until my full literature search is finished.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement V &middot; analytical framework</p>
+  <h2>Representation as a sensitising concept</h2>
+  <svg viewBox="0 0 400 250" role="img" aria-label="Concept map: representation in the centre with possible aspects around it">
+    <line class="l" x1="200" y1="115" x2="75" y2="45"/><line class="l" x1="200" y1="115" x2="325" y2="45"/>
+    <line class="l" x1="200" y1="115" x2="65" y2="185"/><line class="l" x1="200" y1="115" x2="335" y2="185"/>
+    <line class="l" x1="200" y1="115" x2="200" y2="225"/><line class="l" x1="200" y1="115" x2="200" y2="26"/>
+    <ellipse class="n" cx="200" cy="26" rx="46" ry="22"/><text x="200" y="24">organising</text><text x="200" y="37">events</text>
+    <ellipse class="n" cx="200" cy="115" rx="52" ry="30"/><text x="200" y="119">representation?</text>
+    <ellipse class="n" cx="75" cy="45" rx="48" ry="20"/><text x="75" y="49">belonging</text>
+    <ellipse class="n" cx="325" cy="45" rx="52" ry="20"/><text x="325" y="49">responsibility</text>
+    <ellipse class="n" cx="65" cy="185" rx="56" ry="24"/><text x="65" y="182">connection</text><text x="65" y="196">between students</text>
+    <ellipse class="n" cx="335" cy="185" rx="50" ry="20"/><text x="335" y="189">preparation</text>
+    <ellipse class="n" cx="200" cy="225" rx="48" ry="18"/><text x="200" y="229">repertoire</text>
+  </svg>
+  <p>It tells me what to notice, not what I will find. These aspects, including organising events and preparing for them, may come up in students' accounts; their own words may lead off the map.</p>
+  <p class="note">A sensitising concept gives a general direction for what to notice. A measured concept is defined in advance and turned into a variable to look for.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement V &middot; expectations</p>
+  <h2>What I expect, and could be wrong about</h2>
+  <ul>
+    <li>Performing outside campus may make students more aware of a connection to the university.</li>
+    <li>Some may feel pride or responsibility.</li>
+    <li>But I may be assuming the association matters to them at all.</li>
+  </ul>
+  <p class="note">Written before the first interview, to compare with what participants say.</p>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement V &middot; positionality</p>
+  <h2>Where I stand</h2>
+  <ul>
+    <li>An NU student studying a student community within my own university.</li>
+    <li><b>Helps:</b> shared context, easier conversation.</li>
+    <li><b>Risks:</b> taking university experience for granted; participants skipping explanations because they assume I understand.</li>
+    <li>I first came to this topic through public concert content and online communities: a public-facing image, not necessarily what students experience.</li>
+    <li><b>So:</b> ask for a description of the performance first, ask them to explain the obvious, and write reflexive notes after each interview.</li>
+  </ul>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Movement VI &middot; AI transparency</p>
+  <h2>How I worked with AI</h2>
+  <ul>
+    <li>AI was a discussion partner. It challenged "representing their university" and my interview question about a student's "role"; I rebuilt both to be more open.</li>
+    <li>It checked my citation details. I am reading the sources myself.</li>
+    <li>For this page I described the structure, music and features I wanted, and AI wrote the code. I published it on GitHub Pages myself and decided what to keep or cut.</li>
+    <li>I made the final decisions.</li>
+  </ul>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Encore &middot; not graded</p>
+  <h2>What working with AI helped me understand, and what I still don't understand about my research design</h2>
+  <div class="cols">
+    <div class="card"><h3>Clearer now</h3>Wording carries assumptions: "representing their university" and "role" both built in something students should be free to reject. A student who says "I just play music" gives me data, not a problem. Representation can guide what I notice without being the answer I expect.</div>
+    <div class="card"><h3>Still in the fog</h3>How can I keep representation as an important focus without leading students toward seeing themselves as representatives, if they do not see their performance that way? And what exactly do my sources say? I am still reading them.</div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="in">
+  <p class="kicker">Score notes &middot; references</p>
+  <h2>References</h2>
+  <p class="note" style="font-size:.95rem">Dost, G., &amp; Mazzoli Smith, L. (2023). Understanding higher education students' sense of belonging: a qualitative meta-ethnographic analysis. <i>Journal of Further and Higher Education, 47</i>(6), 822&ndash;849. https://doi.org/10.1080/0309877X.2023.2191176</p>
+  <p class="note" style="font-size:.95rem">Kokotsaki, D., &amp; Hallam, S. (2007). Higher education music students' perceptions of the benefits of participative music making. <i>Music Education Research, 9</i>(1), 93&ndash;109. https://doi.org/10.1080/14613800601127577</p>
+  <p class="note" style="font-size:.95rem">Matthews, K. E., &amp; Dollinger, M. (2023). Student voice in higher education: the importance of distinguishing student representation and student partnership. <i>Higher Education, 85</i>, 555&ndash;570. https://doi.org/10.1007/s10734-022-00851-7</p>
+  <button id="replay" type="button">Hear the whole piece</button>
+</div></section>
+
+</main>
+<footer>
+  <button id="prev" type="button" aria-label="Previous">Back</button>
+  <div class="staff" aria-hidden="true"><span id="note">&#9834;</span></div>
+  <span id="count" aria-live="polite"></span>
+  <button id="snd" type="button" aria-label="Sound on or off">Sound: on</button>
+  <button id="next" type="button" aria-label="Next">Next</button>
+</footer>
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var n = slides.length, last = n - 1;
+  var count = document.getElementById('count'), note = document.getElementById('note'), staff = document.querySelector('.staff');
+  var MELODY = [329.63,329.63,349.23,392,392,349.23,329.63,293.66,261.63,261.63,293.66,329.63,293.66,261.63,261.63];
+  var i = 0, visited = {}, actx = null, muted = false, timers = [], pls = [];
+  function pos(k) { return 'calc(' + (k / last * 100) + '% - ' + (k / last * 12) + 'px)'; }
+  function ac() {
+    try { var C = window.AudioContext || window.webkitAudioContext; if (!actx) actx = new C(); if (actx.state === 'suspended') actx.resume(); } catch (e) {}
+    return actx;
+  }
+  function tone(f, t, dur, vol) {
+    if (muted) return;
+    var c = ac(); if (!c) return;
+    try {
+      var o = c.createOscillator(), o2 = c.createOscillator(), g = c.createGain(), g2 = c.createGain(), s = c.currentTime + t;
+      o.type = 'triangle'; o2.type = 'sine'; o.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.25;
+      o.connect(g); o2.connect(g2); g2.connect(g); g.connect(c.destination);
+      g.gain.setValueAtTime(0.0001, s); g.gain.linearRampToValueAtTime(vol, s + 0.02); g.gain.exponentialRampToValueAtTime(0.0008, s + dur);
+      o.start(s); o2.start(s); o.stop(s + dur + 0.05); o2.stop(s + dur + 0.05);
+    } catch (e) {}
+  }
+  slides.forEach(function (s, k) {
+    var p = document.createElement('span'), f = MELODY[k % MELODY.length], norm = (f - 261.63) / (392 - 261.63);
+    p.className = 'pl'; p.textContent = '\u266A'; p.style.left = pos(k); p.style.top = (14 * (1 - norm) - 2) + 'px';
+    staff.appendChild(p); pls.push(p);
+  });
+  function playAll() {
+    timers.forEach(clearTimeout); timers = [];
+    pls.forEach(function (p) { p.classList.remove('glow'); });
+    MELODY.forEach(function (f, k) {
+      tone(f, 0.15 + k * 0.34, 0.9, 0.13);
+      timers.push(setTimeout(function () { if (pls[k]) pls[k].classList.add('glow'); }, 150 + k * 340));
+    });
+  }
+  function show(k, silent) {
+    var prev = i;
+    i = Math.max(0, Math.min(last, k));
+    slides.forEach(function (s, j) {
+      s.classList.toggle('active', j === i);
+      s.classList.toggle('past', j < i);
+      if (j === i) s.scrollTop = 0;
+    });
+    slides[i].querySelectorAll('.frag').forEach(function (e) { e.classList.toggle('on', i < prev); });
+    \1
+    note.style.left = pos(i);
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+    if (!visited[i]) {
+      visited[i] = true;
+      pls[i].classList.add('on');
+      if (!silent && i !== prev) { if (i === last) playAll(); else tone(MELODY[i % MELODY.length], 0, 0.9, 0.13); }
+    }
+  }
+  function nxt() {
+    var f = slides[i].querySelectorAll('.frag:not(.on)');
+    if (f.length) { f[0].classList.add('on'); tone(MELODY[i % MELODY.length] * 2, 0, 0.5, 0.06); } else show(i + 1);
+  }
+  function prv() {
+    var f = slides[i].querySelectorAll('.frag.on');
+    if (f.length) f[f.length - 1].classList.remove('on'); else show(i - 1);
+  }
+  document.getElementById('prev').onclick = prv;
+  document.getElementById('next').onclick = nxt;
+  document.getElementById('replay').onclick = function () { muted = false; document.getElementById('snd').textContent = 'Sound: on'; playAll(); };
+  document.getElementById('snd').onclick = function () {
+    muted = !muted; this.textContent = muted ? 'Sound: off' : 'Sound: on';
+    if (muted) { timers.forEach(clearTimeout); timers = []; }
+  };
+  document.addEventListener('keydown', function (e) {
+    if (e.target && e.target.tagName === 'BUTTON' && e.key === ' ') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); nxt(); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prv(); }
+  });
+  var x0 = null;
+  document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (dx < -60) nxt(); else if (dx > 60) prv();
+  });
+  document.getElementById('tune').onclick = function () { tone(440, 0, 1.8, 0.15); };
+  var start = (parseInt(location.hash.slice(1), 10) || 1) - 1;
+  for (var q = 0; q < Math.max(0, Math.min(last, start)); q++) { visited[q] = true; pls[q].classList.add('on'); }
+  show(start, true);
+})();
+</script>
+</body>
+</html>
